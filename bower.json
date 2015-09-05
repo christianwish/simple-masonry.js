@@ -1,0 +1,21 @@
+{
+  "name": "column.js",
+  "version": "1.0.0",
+  "description": "Fortlaufende Sortierung von unterschiedlich hohen Elementen in einem Raster aus belibiger Anzahl von Spalten - responsive",
+  "main": [
+    "js/column-es6.js"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "columns",
+    "responsive",
+    "layout",
+    "order"
+  ],
+  "authors": [
+    "Christian Heyn <chris.heyn.dd@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": []
+}

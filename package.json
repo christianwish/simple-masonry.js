@@ -1,0 +1,24 @@
+{
+  "name": "simple-masonry.js",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Christian Heyn <chris.heyn.dd@gmail.com>",
+  "license": "",
+  "devDependencies": {
+    "babel": "*",
+    "bootstrap": "*",
+    "chai": "^3.2.0",
+    "jscs": "^2.0.0",
+    "jshint": "^2.8.0",
+    "mocha": "^2.2.5",
+    "mocha-phantomjs": "*",
+    "phantomjs": "*"
+  },
+  "scripts": {
+    "babel": "babel js/simple-masonry.js --out-file js/simple-masonry-compiled.js",
+    "babel:watch": "babel js/simple-masonry.js --watch --out-file js/simple-masonry-compiled.js",
+    "jshint": "jshint",
+    "test": "mocha-phantomjs tests/index.html",
+    "postinstall": "npm run babel && npm test"
+  }
+}
