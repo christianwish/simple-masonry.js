@@ -18,7 +18,6 @@
     "babel": "babel js/simple-masonry.js --out-file js/simple-masonry-compiled.js",
     "babel:watch": "babel js/simple-masonry.js --watch --out-file js/simple-masonry-compiled.js",
     "jshint": "jshint",
-    "test": "mocha-phantomjs tests/index.html",
-    "postinstall": "npm run babel && npm test"
+    "test": "mocha-phantomjs tests/index.html"
   }
 }
