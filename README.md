@@ -2,7 +2,7 @@
 Show items with different heights in a grid of responsive columns.
 **No** `position: absolute` and so fully flexible in height and width of any item.
 
-Check **[demo](https://christianheyn.com/projects/simple-masonry.js/)**.
+Check **[demo](http://christianheyn.com/projects/simple-masonry.js/)**.
 
 _simple-masonry.js is written as es6. If you are not using a es6-compiler in your project then use simple-masonry-compiled.js instead!_
 
