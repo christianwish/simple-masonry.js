@@ -119,8 +119,9 @@ simpleM.on('order', function (items) {
     // do stuff
 });
 ```
+___
 
-Demo installieren:
+### install demo
 
 ```
 $ npm install
