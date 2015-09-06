@@ -2,6 +2,7 @@ var assert = chai.assert,
 	// TEST
 	simpleMasonryTest = new SimpleMasonry(),
 	prependButton = document.getElementById('prepend-btn');
+	appendButton = document.getElementById('append-btn');
 try {
 	simpleMasonryTest.go();
 	simpleMasonryTest.each(function (item, index) {
@@ -12,6 +13,10 @@ try {
 	prependButton.addEventListener('click', function () {
 		simpleMasonryTest.prepend(document.getElementById('item-prepend'));
 		prependButton.setAttribute('style', 'display: none');
+	});
+	appendButton.addEventListener('click', function () {
+		simpleMasonryTest.append(document.getElementById('item-append'));
+		appendButton.setAttribute('style', 'display: none');
 	});
 } catch (error) {
 	console.log('something goes wrong.');
