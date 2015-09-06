@@ -1,12 +1,17 @@
 var assert = chai.assert,
 	// TEST
-	simpleMasonryTest = new SimpleMasonry();
+	simpleMasonryTest = new SimpleMasonry(),
+	prependButton = document.getElementById('prepend-btn');
 try {
 	simpleMasonryTest.go();
 	simpleMasonryTest.each(function (item, index) {
 		var min = 50,
 			max = 100;
 		item.style.paddingBottom = Math.floor(Math.random()*(max-(min+1))+(min+1)) + '%';
+	});
+	prependButton.addEventListener('click', function () {
+		simpleMasonryTest.prepend(document.getElementById('item-prepend'));
+		prependButton.setAttribute('style', 'display: none');
 	});
 } catch (error) {
 	console.log('something goes wrong.');
