@@ -1,17 +1,20 @@
 {
-  "name": "column.js",
+  "name": "simple-masonry.js",
   "version": "1.0.0",
-  "description": "Fortlaufende Sortierung von unterschiedlich hohen Elementen in einem Raster aus belibiger Anzahl von Spalten - responsive",
+  "description": "Show items with different heights in a grid of responsive columns.",
   "main": [
-    "js/column-es6.js"
+    "js/simple-masonry.js",
+    "js/simple-masonry-compiled.js"
   ],
   "dependencies": {},
   "devDependencies": {},
   "keywords": [
+    "masonry",
     "columns",
     "responsive",
     "layout",
-    "order"
+    "order",
+    "es6"
   ],
   "authors": [
     "Christian Heyn <chris.heyn.dd@gmail.com>"

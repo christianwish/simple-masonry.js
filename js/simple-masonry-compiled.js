@@ -1,6 +1,9 @@
 /* jslint esnext:true */
-// babel js/column-es6.js --watch --out-file js/column-es6-compiled.js
-//
+/**
+ * SimpleMasonry
+ * @param  {Object} settings with selectors
+ * @return {Object} this
+ */
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -25,7 +28,6 @@ var SimpleMasonry = (function () {
         return privateObj;
     };
     // init SimpleMasonry's private Object
-    //const SimpleMasonryPrivates = new WeakMap();
     /**
      * SimpleMasonry Class
      * @param  {String|Node} columnBoxClass Name of the wrapper-selector or node
@@ -51,7 +53,6 @@ var SimpleMasonry = (function () {
                 initItems = undefined,
                 getChildNodes = undefined;
             // create private Object
-            //SimpleMasonryPrivates.set(this, {});
             _(this).privates = {};
             privateProps = _(this).privates;
             // overwrite defaults

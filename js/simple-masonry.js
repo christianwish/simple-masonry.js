@@ -1,6 +1,9 @@
 /* jslint esnext:true */
-// babel js/column-es6.js --watch --out-file js/column-es6-compiled.js
-//
+/**
+ * SimpleMasonry
+ * @param  {Object} settings with selectors
+ * @return {Object} this
+ */
 var SimpleMasonry = (() => {
     let instances = [],
         privates = [],
@@ -19,7 +22,6 @@ var SimpleMasonry = (() => {
             return privateObj;
         };
     // init SimpleMasonry's private Object
-    //const SimpleMasonryPrivates = new WeakMap();
     /**
      * SimpleMasonry Class
      * @param  {String|Node} columnBoxClass Name of the wrapper-selector or node
@@ -39,7 +41,6 @@ var SimpleMasonry = (() => {
                 initItems,
                 getChildNodes;
             // create private Object
-            //SimpleMasonryPrivates.set(this, {});
              _(this).privates = {}
             privateProps = _(this).privates;
             // overwrite defaults

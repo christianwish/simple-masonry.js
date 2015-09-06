@@ -1,12 +1,14 @@
 # simple-masonry.js
 Show items with different heights in a grid of responsive columns.
-*No* `position: absolute` and so fully flexible in height and width of any item.
+**No** `position: absolute` and so fully flexible in height and width of any item.
 
 Check **[demo](https://christianheyn.com/projects/simple-masonry.js/)**.
 
 _simple-masonry.js is written as es6. If you are not using a es6-compiler in your project then use simple-masonry-compiled.js instead!_
 
 `simple-masonry.js` works great with bootstrap (but you can use your own grid as well!). Wrap some columns in a container and fill them with items. It dosn't matter if you put them all in one column or preorder them. `simple-masonry.js` will order all items from each column in a zipper method as you can see in the following snippet.
+
+
 ```html
 <!-- wrap columns -->
 <section class="masonry-box container">
