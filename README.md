@@ -1,4 +1,4 @@
-column.js
+simple-masonry.js
 =========
 Fortlaufende Sortierung von unterschiedlich hohen Elementen in einem Raster aus belibiger Anzahl von Spalten + responsive-Anpassung bei Veränderung der Spaltenanzahl.
 
