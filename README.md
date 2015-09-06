@@ -1,5 +1,5 @@
 # simple-masonry.js
-## Show items with different heights in a grid of responsive columns.
+Show items with different heights in a grid of responsive columns.
 *No* `position: absolute` and so fully flexible in height and width of any item.
 
 _simple-masonry.js is written as es6. If you are not using a es6-compiler in your project then use simple-masonry-compiled.js instead!_
