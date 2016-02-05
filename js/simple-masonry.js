@@ -21,11 +21,11 @@ var SimpleMasonry = (function () {
             }
             return privateObj;
         };
-    // init SimpleMasonry's private Object
+    
     /**
      * SimpleMasonry Class
-     * @param  {String|Node} columnBoxClass Name of the wrapper-selector or node
-     * @param  {String} columnClass    Name of the column-selector
+     * @param  {string|Object} columnBoxClass Name of the wrapper-selector or node
+     * @param  {string} columnClass    Name of the column-selector
      */
     class SimpleMasonryInner {
         constructor (settings = {}) {
@@ -61,7 +61,7 @@ var SimpleMasonry = (function () {
 
             /**
              * check if parameter is a node
-             * @param  {(Object|String|Number)} node
+             * @param  {(Object|string|Number)} node
              * @return {Boolean}
              */
             privateProps.isNode = (node) => {
@@ -83,8 +83,8 @@ var SimpleMasonry = (function () {
             // Columnbox iterator Number i
             privateProps.iBoxes = privateProps.columnBoxes.length - 1;
             /**
-             * @param  {Node} columnBox
-             * @return {Integer}
+             * @param  {Object} columnBox
+             * @return {number}
              */
             privateProps.countAvailableColumns = (columnBox) => {
                 var cols = columnBox.simpleMesonry.columns;
@@ -107,7 +107,7 @@ var SimpleMasonry = (function () {
             };
             /**
              * sorts all items in the available columns
-             * @param  {Node} columnBox
+             * @param  {Object} columnBox
              */
             privateProps.orderItems = (columnBox) => {
                 // check all available columns.. returns a Number
@@ -135,7 +135,7 @@ var SimpleMasonry = (function () {
             };
             /**
              * returns a array of childnodes without any textnodes
-             * @param  {Node} parent The object whose children are to be filtered
+             * @param  {Object} parent The object whose children are to be filtered
              * @return {Array}  all childnodes but no textnodes
              */
             getChildNodes = (parent) => {
@@ -154,7 +154,7 @@ var SimpleMasonry = (function () {
             };
             /**
              * Finds all childnodes (items) in columns and collects them as an array in the right order
-             * @param  {Node} columnBox
+             * @param  {Object} columnBox
              */
             initItems = (columnBox) => {
                 var cols = (columnBox.simpleMesonry && columnBox.simpleMesonry.columns),
@@ -172,8 +172,8 @@ var SimpleMasonry = (function () {
                             nothing = 0,
                             /**
                              * Recursion through all contained arrays to use zipper-method
-                             * @param  {Integer} col  the column
-                             * @param  {Integer} item the item
+                             * @param  {number} col  the column
+                             * @param  {number} item the item
                              */
                             order = function (col, item) {
 
@@ -210,7 +210,7 @@ var SimpleMasonry = (function () {
 
             /**
              * finds all columns that are childnodes of this columnbox
-             * @param  {Node} columnBox
+             * @param  {Object} columnBox
              */
             initColumns = (columnBox) => {
                 var columns = columnBox.querySelectorAll(privateProps.masonryColumn);
@@ -232,7 +232,7 @@ var SimpleMasonry = (function () {
             privateProps.eventStore = {};
             /**
              * init a Event and calls all callbacks when exists
-             * @param  {String} name  eventName
+             * @param  {string} name  eventName
              * @param  {Object|Node|Array} param depending on eventType
              */
             privateProps.doEvent = (name, param) => {
@@ -245,7 +245,7 @@ var SimpleMasonry = (function () {
             };
             /**
              * init all Stuff for a ColumnBox
-             * @param  {Node} columnBox
+             * @param  {Object} columnBox
              */
             privateProps.init = (columnBox) => {
                 // expand object for all coming references
@@ -346,7 +346,7 @@ var SimpleMasonry = (function () {
         }
         /**
          * get all items or the items of a single column
-         * @param  {Integer} colNumber 0 for the first column
+         * @param  {number} colNumber 0 for the first column
          * @return {Array}           Array of items
          */
         get(colNumber) {
@@ -381,7 +381,7 @@ var SimpleMasonry = (function () {
         /**
          * iterate trough all items or to all items of a single column
          * @param  {Object} f         callback for single item
-         * @param  {Integer} colNumber just items of this column
+         * @param  {number} colNumber just items of this column
          * @return {Object}           this
          */
         each(f, colNumber) {
@@ -399,7 +399,7 @@ var SimpleMasonry = (function () {
         }
         /**
          * register an Event
-         * @param  {String} eventType name of the event
+         * @param  {string} eventType name of the event
          * @param  {Function} f         callback
          * @return {Object}           this
          */
