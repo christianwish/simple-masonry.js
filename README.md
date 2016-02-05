@@ -68,7 +68,7 @@ var simpleM = new SimpleMasonry({
 Then run it
 ```js
 // init all and order items
-simpleM.go();
+simpleM.init();
 ```
 
 

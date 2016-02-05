@@ -4,7 +4,7 @@ var assert = chai.assert,
 	prependButton = document.getElementById('prepend-btn');
 	appendButton = document.getElementById('append-btn');
 try {
-	simpleMasonryTest.go();
+	simpleMasonryTest.init();
 	simpleMasonryTest.each(function (item, index) {
 		var min = 50,
 			max = 100;
@@ -53,7 +53,7 @@ describe('SimpleMasonry', function () {
 			var masonry = new SimpleMasonry({
 				masonryBox: '#masonry-box-string-test'
 			});
-			masonry.go();
+			masonry.init();
 			assert.property(document.getElementById('masonry-box-string-test'), 'simpleMesonry');
 		});
 		it('object property "masonryBox" can be node-element', function () {
@@ -61,7 +61,7 @@ describe('SimpleMasonry', function () {
 				masonry = new SimpleMasonry({
 				masonryBox: element
 			});
-			masonry.go();
+			masonry.init();
 			assert.property(element, 'simpleMesonry');
 		});
 		it('object property "masonryBox" can be array made of node-elements', function () {
@@ -69,7 +69,7 @@ describe('SimpleMasonry', function () {
 				masonry = new SimpleMasonry({
 				masonryBox: [element]
 			});
-			masonry.go();
+			masonry.init();
 			assert.property(element, 'simpleMesonry');
 		});
 
@@ -81,7 +81,7 @@ describe('SimpleMasonry', function () {
 			var masonry = new SimpleMasonry({
 				masonryBox: '#masonry-box-nocolumn-test'
 			});
-			masonry.go();
+			masonry.init();
 			assert.isArray(document.getElementById('masonry-box-nocolumn-test').simpleMesonry.columns);
 			assert.lengthOf(document.getElementById('masonry-box-nocolumn-test').simpleMesonry.columns, 0);
 		});
@@ -89,7 +89,7 @@ describe('SimpleMasonry', function () {
 			var masonry = new SimpleMasonry({
 				masonryBox: '#masonry-box-noitems-test'
 			});
-			masonry.go();
+			masonry.init();
 			assert.isArray(document.getElementById('masonry-box-noitems-test').simpleMesonry.items);
 			assert.lengthOf(masonry.get(), 0);
 		});
@@ -100,8 +100,8 @@ describe('SimpleMasonry', function () {
 				masonry2 = new SimpleMasonry({
 					masonryBox: '#masonry-box-nested2-test'
 				});
-			masonry1.go();
-			masonry2.go();
+			masonry1.init();
+			masonry2.init();
 			assert.isArray(document.getElementById('masonry-box-nested1-test').simpleMesonry.items);
 			assert.lengthOf(masonry1.get(), 1);
 			assert.isArray(document.getElementById('masonry-box-nested2-test').simpleMesonry.items);

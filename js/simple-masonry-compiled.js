@@ -297,8 +297,8 @@ var SimpleMasonry = function () {
          */
 
         _createClass(SimpleMasonryInner, [{
-            key: 'go',
-            value: function go() {
+            key: 'init',
+            value: function init() {
                 var that = this,
                     privateProps = _(this).privates,
                     columnBoxes = privateProps.columnBoxes,

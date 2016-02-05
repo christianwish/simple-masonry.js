@@ -282,7 +282,7 @@ var SimpleMasonry = (function () {
          * init all
          * @return {Object} this
          */
-        go() {
+        init() {
             var that = this,
                 privateProps = _(this).privates,
                 columnBoxes = privateProps.columnBoxes,
