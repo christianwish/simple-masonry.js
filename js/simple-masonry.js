@@ -4,7 +4,7 @@
  * @param  {Object} settings with selectors
  * @return {Object} this
  */
-var SimpleMasonry = (() => {
+var SimpleMasonry = (function () {
     let instances = [],
         privates = [],
         // private object accessor function
@@ -36,12 +36,14 @@ var SimpleMasonry = (() => {
                     masonryBox: '.masonry-box',
                     masonryColumn: '.masonry-column'
                 };
+
             // functions used just in this constructor
             let initColumns,
                 initItems,
                 getChildNodes;
+
             // create private Object
-             _(this).privates = {}
+            _(this).privates = {}
             privateProps = _(this).privates;
             // overwrite defaults
             for (var prop in defaults) {
@@ -51,10 +53,12 @@ var SimpleMasonry = (() => {
                     }
                 } 
             }
+
             // Css Class used for columnboxes
             privateProps.masonryBox = defaults.masonryBox;
             // Css Class used for columns
             privateProps.masonryColumn = defaults.masonryColumn;
+
             /**
              * check if parameter is a node
              * @param  {(Object|String|Number)} node

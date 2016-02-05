@@ -1,16 +1,16 @@
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /* jslint esnext:true */
 /**
  * SimpleMasonry
  * @param  {Object} settings with selectors
  * @return {Object} this
  */
-'use strict';
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-var SimpleMasonry = (function () {
+var SimpleMasonry = function () {
     var instances = [],
         privates = [],
 
@@ -34,7 +34,7 @@ var SimpleMasonry = (function () {
      * @param  {String} columnClass    Name of the column-selector
      */
 
-    var SimpleMasonryInner = (function () {
+    var SimpleMasonryInner = function () {
         function SimpleMasonryInner() {
             var settings = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
@@ -48,10 +48,12 @@ var SimpleMasonry = (function () {
                 masonryBox: '.masonry-box',
                 masonryColumn: '.masonry-column'
             };
+
             // functions used just in this constructor
             var initColumns = undefined,
                 initItems = undefined,
                 getChildNodes = undefined;
+
             // create private Object
             _(this).privates = {};
             privateProps = _(this).privates;
@@ -63,10 +65,12 @@ var SimpleMasonry = (function () {
                     }
                 }
             }
+
             // Css Class used for columnboxes
             privateProps.masonryBox = defaults.masonryBox;
             // Css Class used for columns
             privateProps.masonryColumn = defaults.masonryColumn;
+
             /**
              * check if parameter is a node
              * @param  {(Object|String|Number)} node
@@ -76,7 +80,7 @@ var SimpleMasonry = (function () {
                 return node && typeof node.innerHTML === 'string';
             };
             // all ColumnBox-Nodes
-            privateProps.columnBoxes = (function () {
+            privateProps.columnBoxes = function () {
                 if (!!privateProps.isNode(privateProps.masonryBox)) {
                     return [privateProps.masonryBox];
                 } else if (!!Array.isArray(privateProps.masonryBox)) {
@@ -86,7 +90,7 @@ var SimpleMasonry = (function () {
                 } else {
                     return [];
                 }
-            })();
+            }();
             // Columnbox iterator Number i
             privateProps.iBoxes = privateProps.columnBoxes.length - 1;
             /**
@@ -145,7 +149,7 @@ var SimpleMasonry = (function () {
              * @param  {Node} parent The object whose children are to be filtered
              * @return {Array}  all childnodes but no textnodes
              */
-            getChildNodes = function (parent) {
+            getChildNodes = function getChildNodes(parent) {
                 var children = parent.childNodes,
                     iChild = children.length - 1,
                     result = [];
@@ -163,7 +167,7 @@ var SimpleMasonry = (function () {
              * Finds all childnodes (items) in columns and collects them as an array in the right order
              * @param  {Node} columnBox
              */
-            initItems = function (columnBox) {
+            initItems = function initItems(columnBox) {
                 var cols = columnBox.simpleMesonry && columnBox.simpleMesonry.columns,
                     iCols = cols.length - 1,
                     filtered,
@@ -221,7 +225,7 @@ var SimpleMasonry = (function () {
              * finds all columns that are childnodes of this columnbox
              * @param  {Node} columnBox
              */
-            initColumns = function (columnBox) {
+            initColumns = function initColumns(columnBox) {
                 var columns = columnBox.querySelectorAll(privateProps.masonryColumn);
                 var iColumns = columns.length - 1;
                 // iterartion through all columns
@@ -286,9 +290,7 @@ var SimpleMasonry = (function () {
                     }
                 }
             });
-        }
-
-        // END of constructor
+        } // END of constructor
         /**
          * init all
          * @return {Object} this
@@ -306,12 +308,12 @@ var SimpleMasonry = (function () {
                 }
                 return this;
             }
-
             /**
              * add a node or a array of nodes at the end of all items
              * @param  {Node|Array} node
              * @return {Object}      this
              */
+
         }, {
             key: 'append',
             value: function append(node) {
@@ -335,12 +337,12 @@ var SimpleMasonry = (function () {
                 }
                 return this;
             }
-
             /**
              * add a node or a array of nodes at the beginning of all items
              * @param  {Node|Array} node
              * @return {object}      this
              */
+
         }, {
             key: 'prepend',
             value: function prepend(node) {
@@ -364,12 +366,12 @@ var SimpleMasonry = (function () {
                 }
                 return this;
             }
-
             /**
              * get all items or the items of a single column
              * @param  {Integer} colNumber 0 for the first column
              * @return {Array}           Array of items
              */
+
         }, {
             key: 'get',
             value: function get(colNumber) {
@@ -401,13 +403,13 @@ var SimpleMasonry = (function () {
                     return resultArray.reverse();
                 }
             }
-
             /**
              * iterate trough all items or to all items of a single column
              * @param  {Object} f         callback for single item
              * @param  {Integer} colNumber just items of this column
              * @return {Object}           this
              */
+
         }, {
             key: 'each',
             value: function each(f, colNumber) {
@@ -423,13 +425,13 @@ var SimpleMasonry = (function () {
                 }
                 return this;
             }
-
             /**
              * register an Event
              * @param  {String} eventType name of the event
              * @param  {Function} f         callback
              * @return {Object}           this
              */
+
         }, {
             key: 'on',
             value: function on(eventType, f) {
@@ -445,7 +447,7 @@ var SimpleMasonry = (function () {
         }]);
 
         return SimpleMasonryInner;
-    })();
+    }();
 
     return SimpleMasonryInner;
-})();
+}();
