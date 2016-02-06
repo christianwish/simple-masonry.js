@@ -22,7 +22,7 @@
     "babel": "babel js/simple-masonry.js --out-file js/simple-masonry-compiled.js",
     "babel:watch": "babel js/simple-masonry.js --watch --out-file js/simple-masonry-compiled.js",
     "jshint": "jshint",
-    "uglify": "uglifyjs --compress --mangle -o js/simple-masonry-compiled.js js/simple-masonry-compiled.min.js",
+    "uglify": "uglifyjs -c -m -- js/simple-masonry-compiled.js > js/simple-masonry-compiled.min.js",
     "test": "mocha-phantomjs tests/index.html"
   }
 }
