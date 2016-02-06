@@ -126,13 +126,6 @@ simpleM.on('order', function (items) {
 ```
 ___
 
-### install demo
-
-```
-$ npm install
-```
-___
-
 ## Authors
 
 * [Christian Heyn](https://github.com/christianheyn)
