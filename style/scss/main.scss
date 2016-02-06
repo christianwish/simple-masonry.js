@@ -1,0 +1,124 @@
+// import Font Awesome
+$fa-font-path: "../../fonts";
+@import '../../node_modules/font-awesome/scss/font-awesome';
+// import Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
+@import 'vars/main';
+
+
+body {
+	background-color: #fff;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.margin-top {
+    margin-top: 30px;
+}
+
+.border-top {
+    border-top: solid 1px $color3;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.github-icon {
+    @include transition(all);
+    position: relative;
+    display: inline-block;
+    color: $color2;
+    padding: 5px 32px 0 0;
+
+    .fa {
+        position: absolute;
+        display: block;
+        right: 0;
+        top: 0;
+        font-size: 30px;
+        //color: $color1;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: $color1;
+    }
+}
+
+.logo {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+
+#header {
+    position: relative;
+    border-bottom: solid 1px $color3;
+    height: 40px;
+    padding-top: 5px;
+}
+
+#start {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.masonry-column {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.item {
+    position: relative;
+    padding: 15px;
+    background-color: $color2;
+    margin: 2px 1px 0 1px;
+}
+
+.item h4,
+.item h3 {
+    color: #fff;
+    font-weight: 200;
+}
+
+.item .columnbox .item {
+    background-color: #ccc;
+    padding: 0px !important;
+    margin: 1px;
+}
+
+.item .columnbox .column {
+    background-color: #fff;
+    padding: 0px !important;
+}
+
+#footer {
+    min-height: 200px;
+    background-color: $color3;
+}
+
+.btn-primary {
+    background-color: $color3;
+    border: none;
+    border-radius: 0;
+    color: $color1;
+    border-bottom: solid 1px $color2;
+
+    &:hover {
+        background-color: $color1;
+        color: $color3;
+    }
+}
+
+.btn {
+    @include transition(all);
+
+    .fa {
+        margin-left: 4px;
+    }
+}
+
+#example1 {
+    
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 340 340" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-680,-680)">
+        <g id="Layer1">
+            <g transform="matrix(1,0,0,1,-470,670)">
+                <path d="M1240,80L1280,60L1280,280L1240,300L1240,80Z" style="fill:rgb(68,136,238);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-390,670)">
+                <path d="M1240,80L1280,60L1280,280L1240,300L1240,80Z" style="fill:rgb(68,136,238);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-310,670)">
+                <path d="M1240,80L1280,60L1280,280L1240,300L1240,80Z" style="fill:rgb(68,136,238);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-430,590)">
+                <path d="M1160,140L1200,160L1200,380L1160,360L1160,140Z" style="fill:rgb(170,204,255);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-350,590)">
+                <path d="M1160,140L1200,160L1200,380L1160,360L1160,140Z" style="fill:rgb(170,204,255);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270,590)">
+                <path d="M1160,140L1200,160L1200,380L1160,360L1160,140Z" style="fill:rgb(170,204,255);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-470,670)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-470,750)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-470,850)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-390,670)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-390,730)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-390,830)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-310,670)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-310,770)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-310,850)">
+                <path d="M1240,80L1280,60L1240,40L1200,60L1240,80Z" style="fill:rgb(230,230,230);"/>
+            </g>
+        </g>
+    </g>
+</svg>
