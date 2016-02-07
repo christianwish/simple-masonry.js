@@ -4,8 +4,8 @@
   "description": "Show items with different height in a grid of responsive columns. Works great with bootstrap.",
   "author": "Christian Heyn <chris.heyn.dd@gmail.com>",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/christianheyn/simple-masonry.js.git"
+    "type": "git",
+    "url": "https://github.com/christianheyn/simple-masonry.js.git"
   },
   "main": "dist/simple-masonry-compiled.min.js",
   "license": "MIT",
@@ -21,8 +21,8 @@
     "jshint": "^2.8.0",
     "mkdirp": "^0.5.1",
     "mocha": "^2.2.5",
-    "mocha-phantomjs": "*",
-    "phantomjs": "*",
+    "mocha-phantomjs": "^4.0.2",
+    "phantomjs": "^2.1.3",
     "uglify": "^0.1.5"
   },
   "keywords": [
