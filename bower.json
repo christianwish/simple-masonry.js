@@ -1,24 +1,27 @@
 {
-  "name": "simple-masonry.js",
-  "version": "1.0.0",
-  "description": "Show items with different heights in a grid of responsive columns.",
-  "main": [
-    "js/simple-masonry.js",
-    "js/simple-masonry-compiled.js"
+  "name": "simple-masonry",
+  "description": "Show items with different height in a grid of responsive columns. Works perfect with bootstrap. No 'position: absolute'.",
+  "main": "dist/simple-masonry-compiled.min.js",
+  "authors": [
+    "Christian Heyn <chris.heyn.dd@gmail.com>"
   ],
-  "dependencies": {},
-  "devDependencies": {},
+  "license": "MIT",
   "keywords": [
     "masonry",
     "columns",
     "responsive",
     "layout",
     "order",
-    "es6"
+    "es6",
+    "bootstrap"
   ],
-  "authors": [
-    "Christian Heyn <chris.heyn.dd@gmail.com>"
-  ],
-  "license": "MIT",
-  "ignore": []
+  "homepage": "https://github.com/christianheyn/simple-masonry.js",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }

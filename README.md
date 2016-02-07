@@ -14,7 +14,7 @@ _simple-masonry.js is written as es6. If you are not using a es6-compiler in you
 <!-- wrap columns -->
 <section class="masonry-box container">
     <!-- columns 1 -->
-    <div class="masonry-column col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="masonry-column col-lg-3 col-md-4 col-sm-6">
         <div class="item">
             <h3>item 1</h3>
         </div>
@@ -37,24 +37,26 @@ _simple-masonry.js is written as es6. If you are not using a es6-compiler in you
         </div>
     </div>
     <!-- columns 2 -->
-    <div class="masonry-column col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="masonry-column col-lg-3 col-md-4 col-sm-6">
         <div class="item">
             <h3>item 2</h3>             
         </div>
     </div>
     <!-- columns 3 -->
-    <div class="masonry-column col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="masonry-column col-lg-3 col-md-4">
         <div class="item">
             <h3>item 3</h3>
         </div>
     </div>
     <!-- columns 4 -->
-    <div class="masonry-column col-lg-3 col-md-4 col-sm-6 col-xs-12"></div>
+    <div class="masonry-column col-lg-3"></div>
 </section>
 ```
 
+
+
 In default you can use the css-class `masonry-box` for the wrapping element and `masonry-column` for columns. Items don't need a extra class. Every element will be ordered if it's not just a pure text-node.
-You can use your own classes for wrapping element and columns if you put them as parameter in js.
+You can use your own classes for wrapping element and columns if you put them as parameter.
 
 ```js
 var simpleM = new SimpleMasonry();
