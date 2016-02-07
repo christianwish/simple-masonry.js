@@ -248,6 +248,8 @@ var SimpleMasonry = (function () {
                     if (columns[iColumns].parentNode === columnBox) {
                         // Put referenz on this columnbox
                         columns[iColumns].style.minHeight = '1px';
+                        columns[iColumns].style.minWidth = '1px';
+                        columns[iColumns].style.float = 'left';
                         columnBox.simpleMesonry.columns.push(columns[iColumns]);
                     }
                 }
