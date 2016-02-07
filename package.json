@@ -1,6 +1,6 @@
 {
   "name": "simple-masonry",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Show items with different height in a grid of responsive columns. Works great with bootstrap.",
   "author": "Christian Heyn <chris.heyn.dd@gmail.com>",
   "repository": {
