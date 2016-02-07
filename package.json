@@ -1,7 +1,7 @@
 {
   "name": "simple-masonry.js-site",
   "version": "1.0.0",
-  "description": "demo-site fpr simple-masonry.js",
+  "description": "demo-site for simple-masonry.js",
   "author": "Christian Heyn <chris.heyn.dd@gmail.com>",
   "license": "MIT",
   "devDependencies": {
@@ -9,13 +9,13 @@
     "copyfiles": "^0.2.1",
     "font-awesome": "^4.5.0",
     "node-sass": "^3.3.2",
-    "simple-masonry.js": "git+https://github.com/christianheyn/simple-masonry.js.git",
+    "simple-masonry": "^1.0.2",
     "uglifyjs": "^2.4.10",
     "watch-run": "^1.2.2"
   },
   "scripts": {
-    "vendor": "npm run vendor:simple-masonry.js && npm run vendor:font-awesome",
-    "vendor:simple-masonry.js": "copyfiles -f node_modules/simple-masonry.js/dist/simple-masonry-compiled.min.js js/vendor",
+    "vendor": "npm run vendor:simple-masonry && npm run vendor:font-awesome",
+    "vendor:simple-masonry": "copyfiles -f node_modules/simple-masonry/dist/simple-masonry-compiled.min.js js/vendor",
     "vendor:font-awesome": "copyfiles -f node_modules/font-awesome/fonts/* fonts",
     "scss:compile": "node-sass style/scss/main.scss 'style/css/main.css' --output",
     "scss:watch": "watch-run -p 'style/scss/**/*.scss' npm run scss:compile",

@@ -10,12 +10,44 @@ body {
 	background-color: #fff;
 }
 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6,
+.btn {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+em {
+    color: #666;
+}
+
+p.bg-warning {
+    padding: 10px;
+}
+
 .margin-bottom {
     margin-bottom: 30px;
 }
 
 .margin-top {
     margin-top: 30px;
+}
+
+.get-it {
+    display: block;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    border: solid 1px #ddd;
+    padding: 6px 12px;
+    background-color: #efefef;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+    font-family: 'Source Code Pro';
 }
 
 .border-top {
@@ -74,6 +106,10 @@ body {
     padding: 15px;
     background-color: $color2;
     margin: 2px 1px 0 1px;
+
+    @media (max-width: $screen-xs-max) {
+        padding-bottom: 10px !important;
+    }
 }
 
 .item h4,
@@ -103,7 +139,7 @@ body {
     border: none;
     border-radius: 0;
     color: $color1;
-    border-bottom: solid 1px $color2;
+    margin-bottom: 10px;
 
     &:hover {
         background-color: $color1;

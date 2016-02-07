@@ -5,7 +5,7 @@
         <meta name="robots" content="index,follow"/>
         <meta name="revisit-after" content="2 days"/>
         <title>simple-masonry.js</title>
-        <meta name="description" content="Show items with different height in a grid of responsive columns. No position: absolute and so fully flexible in height and width of any item" />
+        <meta name="description" content="Show items with different height in a grid of responsive columns. Works great with bootstrap!" />
 
         <!-- Schema.org markup for Google+ -->
         <meta itemprop="name" content="simple-masonry.js">
@@ -29,14 +29,22 @@
 
         <link rel="icon" href="img/favicon.png" type="image/png">
 
-        <link type="text/css" rel="stylesheet" href="style/css/main.css?v=4">
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700|Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+        <link type="text/css" rel="stylesheet" href="style/css/main.css">
     </head>
     <body>
         <header id="header" class="container-fluid">
             <div class="container">
-                <a href="https://github.com/christianheyn/simple-masonry.js" title="view on github" class="pull-right github-icon">
-                    view <strong>simple-masonry.js</strong> on <i class="fa fa-github"></i>
-                </a>
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        <a href="https://github.com/christianheyn/simple-masonry.js" title="view on github" class="pull-right github-icon">
+                            view <strong>simple-masonry.js</strong> on <i class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </header>
         <section class="container-fluid" id="start">
@@ -50,6 +58,10 @@
                         <p>
                             Show items with different heights in a grid of responsive columns. No position: absolute and so fully flexible in height and width of any item.
                         </p>
+
+                        <input type="text" class="get-it" value="$ npm install simple-masonry --save-dev" readonly/>
+                        <input type="text" class="get-it" value="$ bower install simple-masonry" readonly/>
+
                         <hr />
                         <div class="item" id="item-prepend">
                             <h3>#item prepend</h3>
@@ -67,7 +79,7 @@
                         
                     </div>
                     <div class="masonry-box col-lg-9 col-md-9">
-                        <div class="masonry-column col-lg-3 col-md-4 col-sm-6">
+                        <div class="masonry-column col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="item">
                                 <h4>item 1</h3>
                             </div>
@@ -106,18 +118,148 @@
                                 <h4>item 2</h3>             
                             </div>
                         </div>
-                        <div class="masonry-column col-lg-3 col-md-4 col-sm-6">
+                        <div class="masonry-column col-lg-3 col-md-4">
                             <div class="item">
                                 <h4>item 3</h3>
                             </div>
                         </div>
-                        <div class="masonry-column col-lg-3 col-md-4 col-sm-6"></div>
+                        <div class="masonry-column col-lg-3"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="container-fluid border-top" id="start2">
+        
+
+        <section class="container-fluid border-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="container-fluid border-top">
+            <div class="container">
+                <h2>Usage</h2>
+                <p class="margin-bottom">
+                    simple-masonry works great with <strong>bootstrap</strong> (but you can use your own grid as well!). Wrap some columns in a container and fill them with items. It dosn't matter if you put them all in one column or preorder them. simple-masonry will order all items from each column in a zipper method as you can see in the following snippet and in the first example above.
+                </p>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry.html"></script>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <p>
+                            Create columns and set the column width with bootstrap classes (or other grid system) like usual.
+                            <br />
+
+                            <strong>!important: set <em>col-[]-12</em> classes! Also if it seems to be senseless in normal use.</strong>
+                            <br />
+                            <br />
+                            In default you can use the css-class <em>masonry-box</em> for the wrapping element and masonry-column for columns. Items don't need a extra class. Every element will be ordered if it's not just a pure text-node.
+                            <br />
+                            <br />
+                            Get simple-masonry and include it in your project.
+
+                        </p>
+                        <input type="text" class="get-it" value="$ npm install simple-masonry --save-dev" readonly/>
+                        <input type="text" class="get-it" value="$ bower install simple-masonry" readonly/>
+
+                        <p>
+                            <br />
+                            <br />
+                            Init:
+                        </p>
+                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-init.js"></script>
+                        <p class="margin-top margin-bottom bg-warning">
+                             Items don't need an extra class. Every element will be ordered if it isn't just a pure text-node.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid border-top">
+            <div class="container">
+                <h3>.get()</h3>
+                <p class="margin-bottom">
+                    Get all ordered items in an array. Or get all items of one specific column.
+                </p>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-get.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid border-top">
+            <div class="container">
+                <h3>.prepend() & .append()</h3>
+                <p class="margin-bottom">
+                    Add new elements to the grid (example above).
+                </p>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-prepend-append.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section class="container-fluid border-top">
+            <div class="container">
+                <h3>.each()</h3>
+                <p class="margin-bottom">
+                    Iterate through items.
+                </p>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-each.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid border-top">
+            <div class="container">
+                <h3>.columnsLength()</h3>
+                <p class="margin-bottom">
+                    Get Number of available columns
+                </p>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-columnlength.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-fluid border-top">
+            <div class="container">
+                <h3>.on()</h3>
+                <p class="margin-bottom">
+                    Register eventListener.
+                </p>
+                <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-on.js"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="container-fluid border-top">
             <div class="container">
                 <h3>Another usecase</h3>
                 <p class="margin-bottom">
@@ -165,84 +307,8 @@
                             </div>
                         </div>
                         <div class="masonry-column col-lg-5 col-md-8 col-sm-3 col-xs-9"></div>
-                        <div class="masonry-column col-lg-3 col-md-3 col-sm-6 col-xs-9"></div>
-                        <div class="masonry-column col-lg-1 col-md-2 col-sm-6 col-xs-9"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container-fluid border-top" id="example1">
-            <div class="container">
-                <h2>Usage</h2>
-                <p class="margin-bottom">
-                    simple-masonry.js works great with <strong>bootstrap</strong> (but you can use your own grid as well!). Wrap some columns in a container and fill them with items. It dosn't matter if you put them all in one column or preorder them. simple-masonry.js will order all items from each column in a zipper method as you can see in the following snippet and in the first example above.
-                </p>
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=example-1.html"></script>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=init.js"></script>
-                        <p class="margin-top margin-bottom bg-warning">
-                             Items don't need an extra class. Every element will be ordered if it isn't just a pure text-node.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container-fluid border-top" id="example2">
-            <div class="container">
-                <h3>.prepend() & .append()</h3>
-                <p class="margin-bottom">
-                    Add new elements to the grid (example above).
-                </p>
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=prepend-append.js"></script>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container-fluid border-top" id="example3">
-            <div class="container">
-                <h3>.get()</h3>
-                <p class="margin-bottom">
-                    Get all ordered items in an array. Or get all items of one specific column.
-                </p>
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=get.js"></script>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container-fluid border-top" id="example4">
-            <div class="container">
-                <h3>.each()</h3>
-                <p class="margin-bottom">
-                    Iterate through items.
-                </p>
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=each.js"></script>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container-fluid border-top" id="example4">
-            <div class="container">
-                <h3>.on()</h3>
-                <p class="margin-bottom">
-                    Register eventListener.
-                </p>
-                <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=on.js"></script>
+                        <div class="masonry-column col-lg-3 col-md-3 col-sm-6"></div>
+                        <div class="masonry-column col-lg-1 col-md-2 col-sm-6"></div>
                     </div>
                 </div>
             </div>
