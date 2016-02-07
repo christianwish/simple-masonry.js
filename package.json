@@ -23,7 +23,7 @@
   "scripts": {
     "babel": "babel js/simple-masonry.js --out-file dist/simple-masonry-compiled.js",
     "babel:watch": "babel js/simple-masonry.js --watch --out-file dist/simple-masonry-compiled.js",
-    "jshint": "jshint",
+    "jshint": "jshint js/simple-masonry.js",
     "uglify": "uglifyjs -c -m -- dist/simple-masonry-compiled.js > dist/simple-masonry-compiled.min.js",
     "test": "mocha-phantomjs tests/index.html",
     "dist": "mkdirp dist && copyfiles -u 1 js/simple-masonry.js dist && npm run babel && npm run uglify"

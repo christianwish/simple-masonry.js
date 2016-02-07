@@ -111,6 +111,13 @@ simpleM.get().forEach(function (item, index) {
     // do stuff
 });
 ```
+
+### .columnsLength()
+```js
+simpleM.columnsLength();
+// returns number of available columns
+```
+
 ### .on()
 ```js
 // register a eventListener

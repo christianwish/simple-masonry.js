@@ -7,7 +7,7 @@
 var SimpleMasonry = (function () {
     let instances = [],
         privates = [],
-        // private object accessor function
+        // Private object accessor function
         _ = function(instance) {
             var index = instances.indexOf(instance),
                 privateObj;
@@ -37,15 +37,15 @@ var SimpleMasonry = (function () {
                     masonryColumn: '.masonry-column'
                 };
 
-            // functions used just in this constructor
+            // Functions used just in this constructor
             let initColumns,
                 initItems,
                 getChildNodes;
 
-            // create private Object
-            _(this).privates = {}
-            privateProps = _(this).privates;
-            // overwrite defaults
+            // Create private Object
+            _(that).privates = {};
+            privateProps = _(that).privates;
+            // Overwrite defaults
             for (var prop in defaults) {
                 if(defaults.hasOwnProperty(prop)) {
                     if (!!settings[prop]) {
@@ -60,14 +60,33 @@ var SimpleMasonry = (function () {
             privateProps.masonryColumn = defaults.masonryColumn;
 
             /**
-             * check if parameter is a node
+             * Check if parameter is a node
              * @param  {(Object|string|Number)} node
              * @return {Boolean}
              */
             privateProps.isNode = (node) => {
                 return (node && (typeof node.innerHTML === 'string'));
             };
-            // all ColumnBox-Nodes
+
+            privateProps.reverseCopy = (array) => {
+                var resultArray = [],
+                    i = array.length - 1;
+
+                for (i; i >= 0; i -= 1){
+                  resultArray.push(array[i])
+                } 
+                return resultArray;
+            };
+
+            privateProps.splice = (node) => {
+                let columnBox = privateProps.columnBoxes[0],
+                    index = columnBox.simpleMesonry.items.indexOf(node);
+                if (index >= 0) {
+                    columnBox.simpleMesonry.items.splice(index, 1);
+                }
+            };
+
+            // All ColumnBox-Nodes
             privateProps.columnBoxes = (function () {
                 if (!!privateProps.isNode(privateProps.masonryBox)) {
                     return [privateProps.masonryBox];
@@ -80,8 +99,10 @@ var SimpleMasonry = (function () {
                 }
                 
             }());
+
             // Columnbox iterator Number i
             privateProps.iBoxes = privateProps.columnBoxes.length - 1;
+
             /**
              * @param  {Object} columnBox
              * @return {number}
@@ -90,13 +111,13 @@ var SimpleMasonry = (function () {
                 var cols = columnBox.simpleMesonry.columns;
                 let iCol = cols.length - 1,
                     newCount = 0;
-                // if a column exist
+                // If a column exist
                 if (iCol > -1) {
                     // Top of first column
                     let offsetTop = cols[cols.length - 1].offsetTop;
-                    // iterate through columns
+                    // Iterate through columns
                     for (iCol; iCol >= 0; iCol -= 1) {
-                        // if the topvalue is the same
+                        // If the topvalue is the same
                         if (cols[iCol].offsetTop === offsetTop) {
                             newCount += 1;
                         }
@@ -105,12 +126,13 @@ var SimpleMasonry = (function () {
                 }
                 return 0;
             };
+
             /**
-             * sorts all items in the available columns
+             * Sorts all items in the available columns
              * @param  {Object} columnBox
              */
             privateProps.orderItems = (columnBox) => {
-                // check all available columns.. returns a Number
+                // Check all available columns.. returns a Number
                 var is = privateProps.countAvailableColumns(columnBox),
                     items,
                     iItem,
@@ -123,7 +145,7 @@ var SimpleMasonry = (function () {
                 dontUseCols = useCol - is;
                 items = columnBox.simpleMesonry.items;
                 iItem = items.length - 1;
-                // iterate all items to sort them to the right column
+                // Iterate all items to sort them to the right column
                 for (iItem; iItem >= 0; iItem -= 1) {
                     if (useCol <= dontUseCols) {
                         useCol = cols.length - 1;
@@ -133,8 +155,9 @@ var SimpleMasonry = (function () {
                 }
                 privateProps.doEvent('order', items);
             };
+
             /**
-             * returns a array of childnodes without any textnodes
+             * Returns a array of childnodes without any textnodes
              * @param  {Object} parent The object whose children are to be filtered
              * @return {Array}  all childnodes but no textnodes
              */
@@ -149,9 +172,10 @@ var SimpleMasonry = (function () {
                         result.push(children[iChild]);
                     }
                 }
-                // reverses the result to bring it in the right order
+                // Reverses the result to bring it in the right order
                 return result.reverse();
             };
+
             /**
              * Finds all childnodes (items) in columns and collects them as an array in the right order
              * @param  {Object} columnBox
@@ -161,6 +185,7 @@ var SimpleMasonry = (function () {
                     iCols = cols.length - 1,
                     filtered,
                     columnItemArray = [],
+
                     /**
                      * An array that consists of array is merged in the zipper method to a single array
                      * @param  {Array} arrayArray consists arrays
@@ -170,6 +195,7 @@ var SimpleMasonry = (function () {
                         var resultArray = [],
                             length = arrayArray.length,
                             nothing = 0,
+
                             /**
                              * Recursion through all contained arrays to use zipper-method
                              * @param  {number} col  the column
@@ -184,7 +210,7 @@ var SimpleMasonry = (function () {
                                         // next item
                                         item += 1;
                                     }
-                                    // if this item exists
+                                    // If this item exists
                                     if (!!arrayArray[col][item]) {
                                         resultArray.push(arrayArray[col][item]);
                                     } else {
@@ -194,44 +220,47 @@ var SimpleMasonry = (function () {
                                     order(col + 1, item);
                                 }
                             };
-                        // start Recursion
+                        // Start Recursion
                         order(0, 0);
-                        // reverse the result
+                        // Reverse the result
                         return resultArray.reverse();
                     };
+
                 for (iCols; iCols >= 0; iCols -= 1) {
-                    // dont use text-Nodes
+                    // Dont use text-Nodes
                     filtered = getChildNodes(cols[iCols]);
                     columnItemArray.push(filtered);
                 }
-                // put items as referenz on columnbox
+                // Put items as referenz on columnbox
                 columnBox.simpleMesonry.items = orderArrays(columnItemArray);
             };
 
             /**
-             * finds all columns that are childnodes of this columnbox
+             * Finds all columns that are childnodes of this columnbox
              * @param  {Object} columnBox
              */
             initColumns = (columnBox) => {
                 var columns = columnBox.querySelectorAll(privateProps.masonryColumn);
                 let iColumns = columns.length - 1;
-                // iterartion through all columns
+                // Iterartion through all columns
                 for (iColumns; iColumns >= 0; iColumns -= 1) {
-                    // if this column is realy a childnode of this columnbox
+                    // If this column is realy a childnode of this columnbox
                     if (columns[iColumns].parentNode === columnBox) {
-                        // put referenz on this columnbox
+                        // Put referenz on this columnbox
                         columns[iColumns].style.minHeight = '1px';
                         columnBox.simpleMesonry.columns.push(columns[iColumns]);
                     }
                 }
             };
+
             /**
              * Store al events from .on()
              * @type {Object}
              */
             privateProps.eventStore = {};
+
             /**
-             * init a Event and calls all callbacks when exists
+             * Init a Event and calls all callbacks when exists
              * @param  {string} name  eventName
              * @param  {Object|Node|Array} param depending on eventType
              */
@@ -243,8 +272,9 @@ var SimpleMasonry = (function () {
                     }
                 }
             };
+
             /**
-             * init all Stuff for a ColumnBox
+             * Init all Stuff for a ColumnBox
              * @param  {Object} columnBox
              */
             privateProps.init = (columnBox) => {
@@ -262,6 +292,7 @@ var SimpleMasonry = (function () {
                 // orders items to the right columns
                 privateProps.orderItems(columnBox);
             };
+
             /**
              * Resize function reorder items
              */
@@ -278,8 +309,9 @@ var SimpleMasonry = (function () {
                 }
             });
         }// END of constructor
+
         /**
-         * init all
+         * Init all
          * @return {Object} this
          */
         init() {
@@ -287,13 +319,16 @@ var SimpleMasonry = (function () {
                 privateProps = _(this).privates,
                 columnBoxes = privateProps.columnBoxes,
                 i = privateProps.iBoxes;
+
             for (i; i >= 0; i -= 1) {
                 privateProps.init(columnBoxes[i]);
             }
+
             return this;
         }
+
         /**
-         * add a node or a array of nodes at the end of all items
+         * Add a node or a array of nodes at the end of all items
          * @param  {Node|Array} node
          * @return {Object}      this
          */
@@ -301,25 +336,32 @@ var SimpleMasonry = (function () {
             var privateProps = _(this).privates,
                 columnBox = privateProps.columnBoxes[0];
             let i = 0;
-            if (!!privateProps.isNode(node)) {
+
+            if (privateProps.isNode(node)) {
+                privateProps.splice(node);
                 columnBox.simpleMesonry.items.unshift(node);
-                privateProps.doEvent('append', node);
                 privateProps.orderItems(columnBox);
+                privateProps.doEvent('append', node);
             } else if (!!Array.isArray(node)) {
                 i = node.length - 1;
                 node.reverse();
+
                 for (i; i >= 0; i -= 1) {
                     if (!!privateProps.isNode(node[i])) {
+                        privateProps.splice(node[i]);
                         columnBox.simpleMesonry.items.unshift(node[i]);
                         privateProps.doEvent('append', node[i]);
                     }
                 }
+
                 privateProps.orderItems(columnBox);
             }
+
             return this;
         }
+
         /**
-         * add a node or a array of nodes at the beginning of all items
+         * Add a node or a array of nodes at the beginning of all items
          * @param  {Node|Array} node
          * @return {object}      this
          */
@@ -328,6 +370,7 @@ var SimpleMasonry = (function () {
                 columnBox = privateProps.columnBoxes[0];
             let i = 0;
             if (!!privateProps.isNode(node)) {
+                privateProps.splice(node);
                 columnBox.simpleMesonry.items.push(node);
                 privateProps.doEvent('prepend', node);
                 privateProps.orderItems(columnBox);
@@ -336,6 +379,7 @@ var SimpleMasonry = (function () {
                 node.reverse();
                 for (i; i >= 0; i -= 1) {
                     if (!!privateProps.isNode(node[i])) {
+                        privateProps.splice(node[i]);
                         columnBox.simpleMesonry.items.push(node[i]);
                         privateProps.doEvent('prepend', node[i]);
                     }
@@ -344,8 +388,9 @@ var SimpleMasonry = (function () {
             }
             return this;
         }
+
         /**
-         * get all items or the items of a single column
+         * Get all items or the items of a single column
          * @param  {number} colNumber 0 for the first column
          * @return {Array}           Array of items
          */
@@ -359,7 +404,7 @@ var SimpleMasonry = (function () {
                 i;
             // return all items
             if (typeof colNumber !== 'number') {
-                return columnBox.simpleMesonry.items;
+                return privateProps.reverseCopy(columnBox.simpleMesonry.items);
             } else {
                 availableColumns = privateProps.countAvailableColumns(columnBox) - 1;
                 // if column not available
@@ -375,11 +420,12 @@ var SimpleMasonry = (function () {
                         resultArray.push(items[i]);
                     }
                 }
-                return resultArray.reverse();
+                return privateProps.reverseCopy(resultArray);
             }
         }
+
         /**
-         * iterate trough all items or to all items of a single column
+         * Iterate trough all items or to all items of a single column
          * @param  {Object} f         callback for single item
          * @param  {number} colNumber just items of this column
          * @return {Object}           this
@@ -397,8 +443,9 @@ var SimpleMasonry = (function () {
             }
             return this;
         }
+
         /**
-         * register an Event
+         * Register an Event
          * @param  {string} eventType name of the event
          * @param  {Function} f         callback
          * @return {Object}           this
@@ -413,6 +460,17 @@ var SimpleMasonry = (function () {
             }
             return this;
         }
+
+        /**
+         * Get number of available columns
+         * @return {number}
+         */
+        columnsLength() {
+            var privateProps = _(this).privates,
+                columnBox = privateProps.columnBoxes[0];
+            return privateProps.countAvailableColumns(columnBox);
+        }
     }
+    
     return SimpleMasonryInner;
 }());

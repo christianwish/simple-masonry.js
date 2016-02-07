@@ -111,5 +111,94 @@ describe('SimpleMasonry', function () {
 			assert.strictEqual(masonry2.get()[0].getAttribute('class'), 'item-2');
 		});
 	});
-	
+
+	describe('Method', function () {
+		describe('.append()', function () {
+			it('throws no exeption if no parameter is given', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.append();
+				});
+			});
+			it('throws no exeption if parameter is string', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.append('test');
+				});
+			});
+			it('throws no exeption if parameter is an element that is already in this columns', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.append(simpleMasonryTest.get()[3]);
+				});
+			});
+			it('parameter can be an array of elements', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.append([simpleMasonryTest.get()[3], simpleMasonryTest.get()[2]]);
+				});
+			});
+			it('triggers eventListener "append"', function (done) {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.on('append', function () {
+						done();
+					});
+					appendButton.click();
+				});
+			});
+			it('appends the element to be the last element', function () {
+				var l = simpleMasonryTest.get().length;
+				assert.strictEqual(document.getElementById('item-append'), simpleMasonryTest.get()[l-1]);
+			})
+		});
+		describe('.prepend()', function () {
+			it('throws no exeption if no parameter is given', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.prepend();
+				});
+			});
+			it('throws no exeption if parameter is string', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.prepend('test');
+				});
+			});
+			it('throws no exeption if parameter is an element that is already in this columns', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.prepend(simpleMasonryTest.get()[3]);
+				});
+			});
+			it('parameter can be an array of elements', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.prepend([simpleMasonryTest.get()[3], simpleMasonryTest.get()[2]]);
+				});
+			});
+			it('triggers eventListener "prepend"', function (done) {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.on('prepend', function () {
+						done();
+					});
+					prependButton.click();
+				});
+			});
+			it('prepends the element to be the first element in the first column', function () {
+				assert.strictEqual(document.getElementById('item-prepend'), simpleMasonryTest.get()[0]);
+			})
+		});
+		describe('.get()', function () {
+			it('throws no exeption if no parameter is given', function () {
+				assert.doesNotThrow(function () {
+					simpleMasonryTest.get();
+				});
+			});
+			it('returns array always', function () {
+				assert.isArray(simpleMasonryTest.get());
+				assert.isArray(simpleMasonryTest.get(9));
+				assert.isArray(simpleMasonryTest.get('test'));
+			});
+			it('returns array with items of column with given index', function () {
+				assert.isArray(simpleMasonryTest.get(0));
+				assert.isTrue(simpleMasonryTest.get(0).length > 0);
+				assert.isTrue(simpleMasonryTest.get(4).length === 0);
+			});
+			it('returns array with items in right order', function () {
+				assert.strictEqual(simpleMasonryTest.get()[0], document.getElementById('item-prepend'));
+			});
+		});
+	});
 });
