@@ -5,16 +5,16 @@ Show items with different heights in a grid of responsive columns.
 
 Check **[demo](http://christianheyn.github.io/simple-masonry.js/)**.
 
-_simple-masonry.js is written as es6. If you are not using a es6-compiler in your project then use simple-masonry-compiled.js instead!_
+_simple-masonry.js is written as es6. If you are not using a es6-compiler in your project then use simple-masonry-compiled.js!_
 
-`simple-masonry.js` works great with bootstrap (but you can use your own grid as well!). Wrap some columns in a container and fill them with items. It dosn't matter if you put them all in one column or preorder them. `simple-masonry.js` will order all items from each column in a zipper method as you can see in the following snippet.
+simple-masonry works great with **bootstrap** (but you can use your own grid as well!). Wrap some columns in a container and fill them with items. It dosn't matter if you put them all in one column or preorder them. simple-masonry will order all items from each column in a zipper method as you can see in the following snippet.
 
 
 ```html
 <!-- wrap columns -->
 <section class="masonry-box container">
     <!-- columns 1 -->
-    <div class="masonry-column col-lg-3 col-md-4 col-sm-6">
+    <div class="masonry-column col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <div class="item">
             <h3>item 1</h3>
         </div>
@@ -53,11 +53,30 @@ _simple-masonry.js is written as es6. If you are not using a es6-compiler in you
 </section>
 ```
 
+Create columns and set the column width with bootstrap classes (or other grid system) like usual.
+**!important: set 'col-[]-12' classes! Also if it seems to be senseless in normal use.**
 
 
 In default you can use the css-class `masonry-box` for the wrapping element and `masonry-column` for columns. Items don't need a extra class. Every element will be ordered if it's not just a pure text-node.
+
+Get simple-masonry and include it in your project.
+
+**npm**
+
+```
+$ npm install simple-masonry -S
+```
+
+**bower**
+
+```
+$ bower install simple-masonry
+```
+
 You can use your own classes for wrapping element and columns if you put them as parameter.
 
+
+## Usage
 ```js
 var simpleM = new SimpleMasonry();
 ```
@@ -133,6 +152,11 @@ simpleM.on('order', function (items) {
     // do stuff
 });
 ```
+___
+
+
+Demo and more information **[here](http://christianheyn.github.io/simple-masonry.js/)**.
+
 ___
 
 ## Authors
