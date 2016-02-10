@@ -1,5 +1,6 @@
 ![Simple Masonry](http://christianheyn.github.io/simple-masonry.js/img/simple-masonry-readme-logo.png)
 # simple-masonry.js
+
 Show items with different heights in a grid of responsive columns.
 **No** `position: absolute` and so fully flexible in height and width of any item.
 

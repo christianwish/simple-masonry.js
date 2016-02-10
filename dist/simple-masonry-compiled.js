@@ -199,7 +199,6 @@ var SimpleMasonry = function () {
                     filtered,
                     columnItemArray = [],
 
-
                 /**
                  * An array that consists of array is merged in the zipper method to a single array
                  * @param  {Array} arrayArray consists arrays
@@ -209,7 +208,6 @@ var SimpleMasonry = function () {
                     var resultArray = [],
                         length = arrayArray.length,
                         nothing = 0,
-
 
                     /**
                      * Recursion through all contained arrays to use zipper-method
@@ -331,7 +329,6 @@ var SimpleMasonry = function () {
          * Init all
          * @return {Object} this
          */
-
 
         _createClass(SimpleMasonryInner, [{
             key: 'init',
@@ -517,6 +514,6 @@ var SimpleMasonry = function () {
     return SimpleMasonryInner;
 }();
 
-if (module && (typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object') {
+if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object') {
     module.exports = SimpleMasonry;
 }

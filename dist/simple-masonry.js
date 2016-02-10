@@ -477,6 +477,6 @@ var SimpleMasonry = (function () {
     return SimpleMasonryInner;
 }());
 
-if (module && typeof module === 'object') {
+if (typeof module === 'object') {
     module.exports = SimpleMasonry;
 }
