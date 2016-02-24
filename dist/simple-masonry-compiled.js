@@ -37,8 +37,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
     /**
      * SimpleMasonry Class
-     * @param  {string|Object} columnBoxClass Name of the wrapper-selector or node
-     * @param  {string} columnClass    Name of the column-selector
+     * @param  {Object} settings
      */
 
     var SimpleMasonry = function () {
