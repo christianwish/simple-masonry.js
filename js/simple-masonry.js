@@ -1,10 +1,16 @@
 /* jslint esnext:true */
-/**
- * SimpleMasonry
- * @param  {Object} settings with selectors
- * @return {Object} this
- */
-var SimpleMasonry = (function () {
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['SimpleMasonry'], factory);
+    } else if (typeof exports === 'object') {
+        // npm
+        module.exports = factory;
+    } else {
+        // Browser global
+        window.SimpleMasonry = factory;
+    }
+}(function () {
     let instances = [],
         privates = [],
         // Private object accessor function
@@ -21,13 +27,12 @@ var SimpleMasonry = (function () {
             }
             return privateObj;
         };
-    
     /**
      * SimpleMasonry Class
      * @param  {string|Object} columnBoxClass Name of the wrapper-selector or node
      * @param  {string} columnClass    Name of the column-selector
      */
-    class SimpleMasonryInner {
+    class SimpleMasonry {
         constructor (settings = {}) {
             var that = this,
                 privateProps,
@@ -66,18 +71,26 @@ var SimpleMasonry = (function () {
              */
             privateProps.isNode = (node) => {
                 return (node && (typeof node.innerHTML === 'string'));
-            };
-
-            privateProps.reverseCopy = (array) => {
+            };    
+            
+            /**
+             * Returns a reversed copy of array
+             * @param  {Array} srcArray
+             */
+            privateProps.reverseCopy = (srcArray) => {
                 var resultArray = [],
-                    i = array.length - 1;
+                    i = srcArray.length - 1;
 
                 for (i; i >= 0; i -= 1){
-                  resultArray.push(array[i])
+                  resultArray.push(srcArray[i])
                 } 
                 return resultArray;
             };
-
+            
+            /**
+             * Removes node's position in items-array
+             * @param  {Object} node
+             */
             privateProps.splice = (node) => {
                 let columnBox = privateProps.columnBoxes[0],
                     index = columnBox.simpleMesonry.items.indexOf(node);
@@ -97,7 +110,6 @@ var SimpleMasonry = (function () {
                 } else {
                     return [];
                 }
-                
             }());
 
             // Columnbox iterator Number i
@@ -318,7 +330,7 @@ var SimpleMasonry = (function () {
          */
         init() {
             var that = this,
-                privateProps = _(this).privates,
+                privateProps = _(that).privates,
                 columnBoxes = privateProps.columnBoxes,
                 i = privateProps.iBoxes;
 
@@ -474,9 +486,5 @@ var SimpleMasonry = (function () {
         }
     }
     
-    return SimpleMasonryInner;
-}());
-
-if (typeof module === 'object') {
-    module.exports = SimpleMasonry;
-}
+    return SimpleMasonry;
+} ()));

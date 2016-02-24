@@ -1,18 +1,24 @@
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /* jslint esnext:true */
-/**
- * SimpleMasonry
- * @param  {Object} settings with selectors
- * @return {Object} this
- */
-var SimpleMasonry = function () {
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD
+        define(['SimpleMasonry'], factory);
+    } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+        // npm
+        module.exports = factory;
+    } else {
+        // Browser global
+        window.SimpleMasonry = factory;
+    }
+})(function () {
     var instances = [],
         privates = [],
 
@@ -29,18 +35,17 @@ var SimpleMasonry = function () {
         }
         return privateObj;
     };
-
     /**
      * SimpleMasonry Class
      * @param  {string|Object} columnBoxClass Name of the wrapper-selector or node
      * @param  {string} columnClass    Name of the column-selector
      */
 
-    var SimpleMasonryInner = function () {
-        function SimpleMasonryInner() {
+    var SimpleMasonry = function () {
+        function SimpleMasonry() {
             var settings = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-            _classCallCheck(this, SimpleMasonryInner);
+            _classCallCheck(this, SimpleMasonry);
 
             var that = this,
                 privateProps,
@@ -82,16 +87,24 @@ var SimpleMasonry = function () {
                 return node && typeof node.innerHTML === 'string';
             };
 
-            privateProps.reverseCopy = function (array) {
+            /**
+             * Returns a reversed copy of array
+             * @param  {Array} srcArray
+             */
+            privateProps.reverseCopy = function (srcArray) {
                 var resultArray = [],
-                    i = array.length - 1;
+                    i = srcArray.length - 1;
 
                 for (i; i >= 0; i -= 1) {
-                    resultArray.push(array[i]);
+                    resultArray.push(srcArray[i]);
                 }
                 return resultArray;
             };
 
+            /**
+             * Removes node's position in items-array
+             * @param  {Object} node
+             */
             privateProps.splice = function (node) {
                 var columnBox = privateProps.columnBoxes[0],
                     index = columnBox.simpleMesonry.items.indexOf(node);
@@ -330,11 +343,11 @@ var SimpleMasonry = function () {
          * @return {Object} this
          */
 
-        _createClass(SimpleMasonryInner, [{
+        _createClass(SimpleMasonry, [{
             key: 'init',
             value: function init() {
                 var that = this,
-                    privateProps = _(this).privates,
+                    privateProps = _(that).privates,
                     columnBoxes = privateProps.columnBoxes,
                     i = privateProps.iBoxes;
 
@@ -508,12 +521,8 @@ var SimpleMasonry = function () {
             }
         }]);
 
-        return SimpleMasonryInner;
+        return SimpleMasonry;
     }();
 
-    return SimpleMasonryInner;
-}();
-
-if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object') {
-    module.exports = SimpleMasonry;
-}
+    return SimpleMasonry;
+}());
