@@ -1,8 +1,19 @@
-var simpleMasonryTest = new SimpleMasonry(),
+var SimpleMasonry = require('simple-masonry'),
+    heighlightJs = require('highlight.js');
+    simpleMasonryTest = new SimpleMasonry(),
 	prependButton = document.getElementById('prepend-btn'),
 	appendButton = document.getElementById('append-btn');
 
 simpleMasonryTest.init();
+
+window.addEventListener('load', function() {
+    
+    var code = document.querySelectorAll('code'),
+        i = code.length - 1;
+    for (i; i > 0; i -= 1) {
+        heighlightJs.highlightBlock(code[i]);
+    }
+})
 
 simpleMasonryTest.each(function (item, index) {
 	var min = 50,

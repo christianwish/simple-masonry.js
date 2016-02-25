@@ -4,6 +4,8 @@ $color2: #AACCFF;
 
 $color3: #E6E6E6;
 
+$color-green: #5EB656;
+
 
 @mixin transition($task, $duration: 150ms, $wait: 0ms) {
     -webkit-transition-property: $task;

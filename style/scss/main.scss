@@ -1,3 +1,4 @@
+@import '../../node_modules/highlight.js/styles/monokai.css';
 // import Font Awesome
 $fa-font-path: "../../fonts";
 @import '../../node_modules/font-awesome/scss/font-awesome';
@@ -8,6 +9,18 @@ $fa-font-path: "../../fonts";
 
 body {
 	background-color: #fff;
+}
+
+pre {
+    padding: 0;
+}
+
+pre code,
+.hljs {
+    padding: 1.5em;
+    display: block;
+    background-color: #272822;
+    color: #fff;
 }
 
 h1, 
@@ -56,7 +69,7 @@ p.bg-warning {
     padding-bottom: 60px;
 }
 
-.github-icon {
+.header-icon {
     @include transition(all);
     position: relative;
     display: inline-block;
@@ -155,6 +168,26 @@ p.bg-warning {
     }
 }
 
-#example1 {
+#benefits {
+    position: relative;
+    background-color: $color3;
     
+    .benefit-item {
+        display: block;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 1.2em;
+        
+        @media (max-width: $screen-sm-max) {
+            margin-bottom: 30px;
+        }
+    }
+
+    .fa {
+        position: absolute;
+        left: 0;
+        top: 3px;
+        color: $color-green;
+        font-size: 1.4em;
+    }
 }

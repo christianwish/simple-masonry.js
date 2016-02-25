@@ -8,20 +8,20 @@
     "bootstrap-sass": "^3.3.5",
     "copyfiles": "^0.2.1",
     "font-awesome": "^4.5.0",
+    "highlight.js": "^9.2.0",
     "node-sass": "^3.3.2",
-    "simple-masonry": "^1.0.2",
+    "simple-masonry": "^1.0.6",
     "uglifyjs": "^2.4.10",
     "watch-run": "^1.2.2"
   },
   "scripts": {
-    "vendor": "npm run vendor:simple-masonry && npm run vendor:font-awesome",
-    "vendor:simple-masonry": "copyfiles -f node_modules/simple-masonry/dist/simple-masonry-compiled.min.js js/vendor",
+    "vendor": "npm run vendor:font-awesome",
     "vendor:font-awesome": "copyfiles -f node_modules/font-awesome/fonts/* fonts",
     "scss:compile": "node-sass style/scss/main.scss 'style/css/main.css' --output",
     "scss:watch": "watch-run -p 'style/scss/**/*.scss' npm run scss:compile",
-    "js:concat": "cat js/vendor/*.js js/partials/*.js > js/script.js",
+    "js:build": "browserify js/main.js -o js/script.js",
     "js:uglify": "cat js/script.js | uglifyjs > js/script.min.js",
-    "js:watch": "watch-run -p 'js/*/*.js' npm run js:concat",
+    "js:watch": "watch-run -p 'js/*/*.js' npm run js:build",
     "watchAll": "npm run js:watch & npm run scss:watch"
   }
 }

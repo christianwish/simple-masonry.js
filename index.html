@@ -1,3 +1,12 @@
+<!--
+      __      __        ___                  
+|\ | /  \    /  \ |\ | |__                   
+| \| \__/    \__/ | \| |___                  
+   __                  ___  __              /
+| /__`    | |    |    |__  / _`  /\  |     / 
+| .__/    | |___ |___ |___ \__> /~~\ |___ .  
+                                                                                                                                                                      
+-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -37,10 +46,14 @@
         <header id="header" class="container-fluid">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3">
+                        <a href="https://travis-ci.org/christianheyn/simple-masonry.js/builds" title="view Travis build status" class="header-icon">
+                            <img src="https://travis-ci.org/christianheyn/simple-masonry.js.svg?branch=master" alt="Travis build status" />
+                        </a>
+                    </div>
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
-                        <a href="https://github.com/christianheyn/simple-masonry.js" title="view on github" class="pull-right github-icon">
+                        <a href="https://github.com/christianheyn/simple-masonry.js" title="view on github" class="pull-right header-icon">
                             view <strong>simple-masonry.js</strong> on <i class="fa fa-github"></i>
                         </a>
                     </div>
@@ -56,7 +69,7 @@
                             simple-masonry.js<br />
                         </h1>
                         <p>
-                            Show items with different heights in a grid of responsive columns. No position: absolute and so fully flexible in height and width of any item.
+                            Show items with different heights in a grid of responsive columns. No position: absolute.
                         </p>
 
                         <input type="text" class="get-it" value="$ npm install simple-masonry --save-dev" readonly/>
@@ -129,24 +142,30 @@
             </div>
         </section>
 
-        <section class="container-fluid border-top">
+        <section class="container-fluid border-top" id="benefits">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3"></div>
-                    <div class="col-lg-2 col-md-2">
-                        <i class="fa fa-check-square-o"></i>
+                <div class="col-lg-2 col-md-12"></div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="benefit-item">
+                        <i class="fa fa-wrench"></i>
                         no CSS settings
                         <br />
                         with bootstrap
                     </div>
-                    <div class="col-lg-2 col-md-2">
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="benefit-item">
                         <i class="fa fa-file-code-o"></i>
-                        4.50 KB
-                        <br />
+                        4.82 KB
                         minified
                     </div>
-                    <div class="col-lg-2 col-md-2">
-                        <i class="fa fa-check-circle"></i>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="benefit-item">
+                        <i class="fa fa-cube"></i>
+                        npm package
+                        <br />
+                        <small>require('simple-masonry')</small>
                     </div>
                 </div>
             </div>
@@ -157,11 +176,51 @@
             <div class="container">
                 <h2>Usage</h2>
                 <p class="margin-bottom">
-                    simple-masonry works great with <strong>bootstrap</strong> (but you can use your own grid as well!). Wrap some columns in a container and fill them with items. It dosn't matter if you put them all in one column or preorder them. simple-masonry will order all items from each column in a zipper method as you can see in the following snippet and in the first example above.
+                    simple-masonry works great with <strong>bootstrap</strong>. Wrap some columns in a container and fill them with items. It dosn't matter if you put them all in one column or preorder them. simple-masonry will order all items from each column in a zipper method as you can see in the following snippet and in the first example above.
                 </p>
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry.html"></script>
+                        <pre><code class="html">&lt;!-- wrap columns --&gt;
+&lt;section class=&quot;masonry-box container&quot;&gt;
+    &lt;!-- columns 1 --&gt;
+    &lt;div class=&quot;masonry-column col-lg-3 col-md-4 col-sm-6 col-xs-12&quot;&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;h3&gt;item 1&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;!-- item 2 is allready in the second masonry-column --&gt;
+        &lt;!-- item 3 is allready in the third masonry-column --&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;h3&gt;item 4&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;h3&gt;item 5&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;h3&gt;item 6&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;h3&gt;item 7&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;h3&gt;item 8&lt;/h3&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- columns 2 --&gt;
+    &lt;div class=&quot;masonry-column col-lg-3 col-md-4 col-sm-6&quot;&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;h3&gt;item 2&lt;/h3&gt;             
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- columns 3 --&gt;
+    &lt;div class=&quot;masonry-column col-lg-3 col-md-4&quot;&gt;
+        &lt;div class=&quot;item&quot;&gt;
+            &lt;h3&gt;item 3&lt;/h3&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- columns 4 --&gt;
+    &lt;div class=&quot;masonry-column col-lg-3&quot;&gt;&lt;/div&gt;
+&lt;/section&gt;
+                        </code></pre>
                     </div>
                     <div class="col-lg-4 col-md-4">
                         <p>
@@ -185,7 +244,19 @@
                             <br />
                             Init:
                         </p>
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-init.js"></script>
+                        <pre><code class="js">// var SimpleMasonry = require('simple-masonry');
+var simpleM = new SimpleMasonry();
+
+simpleM.init();
+
+//In case you want to use your own css classes:
+
+var simpleM = new SimpleMasonry({
+    masonryBox: '.my-box-class',
+    masonryColumn: '.my-column-class'
+});
+
+simpleM.init();</code></pre>
                         <p class="margin-top margin-bottom bg-warning">
                              Items don't need an extra class. Every element will be ordered if it isn't just a pure text-node.
                         </p>
@@ -202,7 +273,11 @@
                 </p>
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-get.js"></script>
+                        <pre><code class="js">// get all items in an array
+simpleM.get();
+
+// get all items in an array of the column with this index
+simpleM.get(index);</code></pre>
                     </div>
                 </div>
             </div>
@@ -216,8 +291,13 @@
                 </p>
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-prepend-append.js"></script>
-                    </div>
+                        <pre><code class="js">var simpleM = new SimpleMasonry();
+
+simpleM.init();
+
+simpleM.prepend(document.getElementById('item-prepend'));
+
+simpleM.append(document.getElementById('item-append'));</code></pre>
                 </div>
             </div>
         </section>
@@ -232,7 +312,20 @@
                 </p>
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-each.js"></script>
+                        <pre><code class="js">// iterate trough all items
+simpleM.each(function (item, index) {
+    // do stuff
+});
+
+// or to all items of a single column
+simpleM.each(function (item, index) {
+    // do stuff
+}, columnIndex);
+
+// tip: use native Array-iterator
+simpleM.get().forEach(function (item, index) {
+    // do stuff
+});</code></pre>
                     </div>
                 </div>
             </div>
@@ -246,7 +339,8 @@
                 </p>
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-columnlength.js"></script>
+                        <pre><code class="js">simpleM.columnsLength()
+// returns number of available colums</code></pre>
                     </div>
                 </div>
             </div>
@@ -260,63 +354,17 @@
                 </p>
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        <script src="https://gist.github.com/christianheyn/4899cf52d13bddd1ab6e.js?file=simple-masonry-on.js"></script>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <pre><code class="js">simpleM.on('append', function (item) {
+    // do something with appended item
+});
 
+simpleM.on('prepend', function (item) {
+    // do something with prepended item
+});
 
-        <section class="container-fluid border-top">
-            <div class="container">
-                <h3>Another usecase</h3>
-                <p class="margin-bottom">
-                    The item-height is not important and so this is also possible:
-                </p>
-
-                <div class="row">
-                    <div class="masonry-box col-lg-12">
-                        <div class="masonry-column col-lg-3 col-md-4 col-sm-9 col-xs-3">
-                            <div class="item">
-                                <h4>item 1</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 2</h3>             
-                            </div>
-                            <div class="item">
-                                <h4>item 3</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 4</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 5</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 6</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 7</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 8</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 9</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 10</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 11</h3>
-                            </div>
-                            <div class="item">
-                                <h4>item 12</h3>
-                            </div>
-                        </div>
-                        <div class="masonry-column col-lg-5 col-md-8 col-sm-3 col-xs-9"></div>
-                        <div class="masonry-column col-lg-3 col-md-3 col-sm-6"></div>
-                        <div class="masonry-column col-lg-1 col-md-2 col-sm-6"></div>
+simpleM.on('order', function (items) {
+    // do something with all items
+});</code></pre>
                     </div>
                 </div>
             </div>
