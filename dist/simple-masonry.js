@@ -1,10 +1,15 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
+    /**
+     * get a reversed Copy from srcArray
+     * @param  {array} srcArray
+     * @return {array}
+     */
     getReverseArrayCopy: function getReverseArrayCopy(srcArray) {
         var resultArray = [],
             i = srcArray.length - 1;
@@ -15,11 +20,25 @@ exports.default = {
 
         return resultArray;
     },
+
+    /**
+        * Removes node's position in array
+        * @param  {object} node
+        */
     spliceNodeFromArray: function spliceNodeFromArray(node, srcArray) {
         var index = srcArray.indexOf(node);
         if (index >= 0) {
             srcArray.splice(index, 1);
         }
+    },
+
+    /**
+    * Check if parameter is DOM node
+    * @param  {(object|string|number)} node
+    * @return {boolean}
+    */
+    isNode: function isNode(node) {
+        return node && typeof node.innerHTML === 'string';
     }
 };
 
@@ -103,30 +122,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             // Css Class used for columns
             privateProps.masonryColumn = defaults.masonryColumn;
 
-            /**
-             * Check if parameter is a node
-             * @param  {(object|string|number)} node
-             * @return {Boolean}
-             */
-            privateProps.isNode = function (node) {
-                return node && typeof node.innerHTML === 'string';
-            };
-
-            /**
-             * Removes node's position in items-array
-             * @param  {object} node
-             */
-            privateProps.splice = function (node) {
-                var columnBox = privateProps.columnBoxes[0],
-                    index = columnBox.simpleMesonry.items.indexOf(node);
-                if (index >= 0) {
-                    columnBox.simpleMesonry.items.splice(index, 1);
-                }
-            };
-
             // All ColumnBox-Nodes
             privateProps.columnBoxes = function () {
-                if (!!privateProps.isNode(privateProps.masonryBox)) {
+                if (!!_helper2.default.isNode(privateProps.masonryBox)) {
                     return [privateProps.masonryBox];
                 } else if (!!Array.isArray(privateProps.masonryBox)) {
                     return privateProps.masonryBox;
@@ -206,7 +204,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 // iterate childnodes
                 for (iChild; iChild >= 0; iChild -= 1) {
                     // no textNodes or commentNodes
-                    if (!!privateProps.isNode(children[iChild])) {
+                    if (!!_helper2.default.isNode(children[iChild])) {
                         result.push(children[iChild]);
                     }
                 }
@@ -383,11 +381,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             key: 'append',
             value: function append(node) {
                 var privateProps = _(this).privates,
-                    columnBox = privateProps.columnBoxes[0];
-                var i = 0;
+                    columnBox = privateProps.columnBoxes[0],
+                    items = privateProps.columnBoxes[0].simpleMesonry.items,
+                    i = 0;
 
-                if (privateProps.isNode(node)) {
-                    privateProps.splice(node);
+                if (_helper2.default.isNode(node)) {
+                    _helper2.default.spliceNodeFromArray(node, items);
                     columnBox.simpleMesonry.items.unshift(node);
                     privateProps.orderItems(columnBox);
                     privateProps.doEvent('append', node);
@@ -396,8 +395,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     node.reverse();
 
                     for (i; i >= 0; i -= 1) {
-                        if (!!privateProps.isNode(node[i])) {
-                            privateProps.splice(node[i]);
+                        if (!!_helper2.default.isNode(node[i])) {
+                            _helper2.default.spliceNodeFromArray(node[i], items);
                             columnBox.simpleMesonry.items.unshift(node[i]);
                             privateProps.doEvent('append', node[i]);
                         }
@@ -419,10 +418,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             key: 'prepend',
             value: function prepend(node) {
                 var privateProps = _(this).privates,
-                    columnBox = privateProps.columnBoxes[0];
-                var i = 0;
-                if (!!privateProps.isNode(node)) {
-                    privateProps.splice(node);
+                    columnBox = privateProps.columnBoxes[0],
+                    items = privateProps.columnBoxes[0].simpleMesonry.items,
+                    i = 0;
+                if (!!_helper2.default.isNode(node)) {
+                    _helper2.default.spliceNodeFromArray(node, items);
                     columnBox.simpleMesonry.items.push(node);
                     privateProps.doEvent('prepend', node);
                     privateProps.orderItems(columnBox);
@@ -430,8 +430,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     i = node.length - 1;
                     node.reverse();
                     for (i; i >= 0; i -= 1) {
-                        if (!!privateProps.isNode(node[i])) {
-                            privateProps.splice(node[i]);
+                        if (!!_helper2.default.isNode(node[i])) {
+                            _helper2.default.spliceNodeFromArray(node[i], items);
                             columnBox.simpleMesonry.items.push(node[i]);
                             privateProps.doEvent('prepend', node[i]);
                         }
@@ -539,7 +539,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return SimpleMasonry;
     }();
 
-    console.log(123);
     return SimpleMasonry;
 }());
 

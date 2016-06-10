@@ -61,30 +61,9 @@ import helper from './components/helper';
             // Css Class used for columns
             privateProps.masonryColumn = defaults.masonryColumn;
 
-            /**
-             * Check if parameter is a node
-             * @param  {(object|string|number)} node
-             * @return {Boolean}
-             */
-            privateProps.isNode = (node) => {
-                return (node && (typeof node.innerHTML === 'string'));
-            };    
-            
-            /**
-             * Removes node's position in items-array
-             * @param  {object} node
-             */
-            privateProps.splice = (node) => {
-                let columnBox = privateProps.columnBoxes[0],
-                    index = columnBox.simpleMesonry.items.indexOf(node);
-                if (index >= 0) {
-                    columnBox.simpleMesonry.items.splice(index, 1);
-                }
-            };
-
             // All ColumnBox-Nodes
             privateProps.columnBoxes = (function () {
-                if (!!privateProps.isNode(privateProps.masonryBox)) {
+                if (!!helper.isNode(privateProps.masonryBox)) {
                     return [privateProps.masonryBox];
                 } else if (!!Array.isArray(privateProps.masonryBox)) {
                     return privateProps.masonryBox;
@@ -164,7 +143,7 @@ import helper from './components/helper';
                 // iterate childnodes
                 for (iChild; iChild >= 0; iChild -= 1) {
                     // no textNodes or commentNodes
-                    if (!!privateProps.isNode(children[iChild])) {
+                    if (!!helper.isNode(children[iChild])) {
                         result.push(children[iChild]);
                     }
                 }
@@ -331,12 +310,13 @@ import helper from './components/helper';
          * @return {Object}      this
          */
         append(node) {
-            var privateProps = _(this).privates,
-                columnBox = privateProps.columnBoxes[0];
-            let i = 0;
+            let privateProps = _(this).privates,
+                columnBox = privateProps.columnBoxes[0],
+                items = privateProps.columnBoxes[0].simpleMesonry.items,
+                i = 0;
 
-            if (privateProps.isNode(node)) {
-                privateProps.splice(node);
+            if (helper.isNode(node)) {
+                helper.spliceNodeFromArray(node, items);
                 columnBox.simpleMesonry.items.unshift(node);
                 privateProps.orderItems(columnBox);
                 privateProps.doEvent('append', node);
@@ -345,8 +325,8 @@ import helper from './components/helper';
                 node.reverse();
 
                 for (i; i >= 0; i -= 1) {
-                    if (!!privateProps.isNode(node[i])) {
-                        privateProps.splice(node[i]);
+                    if (!!helper.isNode(node[i])) {
+                        helper.spliceNodeFromArray(node[i], items);
                         columnBox.simpleMesonry.items.unshift(node[i]);
                         privateProps.doEvent('append', node[i]);
                     }
@@ -364,11 +344,12 @@ import helper from './components/helper';
          * @return {object}      this
          */
         prepend(node) {
-            var privateProps = _(this).privates,
-                columnBox = privateProps.columnBoxes[0];
-            let i = 0;
-            if (!!privateProps.isNode(node)) {
-                privateProps.splice(node);
+            let privateProps = _(this).privates,
+                columnBox = privateProps.columnBoxes[0],
+                items = privateProps.columnBoxes[0].simpleMesonry.items,
+                i = 0;
+            if (!!helper.isNode(node)) {
+                helper.spliceNodeFromArray(node, items);
                 columnBox.simpleMesonry.items.push(node);
                 privateProps.doEvent('prepend', node);
                 privateProps.orderItems(columnBox);
@@ -376,8 +357,8 @@ import helper from './components/helper';
                 i = node.length - 1;
                 node.reverse();
                 for (i; i >= 0; i -= 1) {
-                    if (!!privateProps.isNode(node[i])) {
-                        privateProps.splice(node[i]);
+                    if (!!helper.isNode(node[i])) {
+                        helper.spliceNodeFromArray(node[i], items);
                         columnBox.simpleMesonry.items.push(node[i]);
                         privateProps.doEvent('prepend', node[i]);
                     }
@@ -469,6 +450,6 @@ import helper from './components/helper';
             return privateProps.countAvailableColumns(columnBox);
         }
     }
-    console.log(123);
+
     return SimpleMasonry;
 } ()));
