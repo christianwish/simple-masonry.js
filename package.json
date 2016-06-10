@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/christianheyn/simple-masonry.js.git"
   },
-  "main": "dist/simple-masonry-compiled.min.js",
+  "main": "dist/simple-masonry.min.js",
   "license": "MIT",
   "devDependencies": {
     "babel": "^6.3.26",
@@ -16,7 +16,6 @@
     "babel-preset-es2015": "^6.3.13",
     "bootstrap": "*",
     "chai": "^3.2.0",
-    "copyfiles": "^0.2.1",
     "jscs": "^3.0.4",
     "jshint": "^2.8.0",
     "mkdirp": "^0.5.1",
@@ -30,17 +29,15 @@
     "columns",
     "responsive",
     "layout",
-    "order",
-    "es6",
     "bootstrap"
   ],
   "scripts": {
     "test": "mocha-phantomjs tests/index.html",
-    "postinstall": "npm test",
-    "babel": "babel js/simple-masonry.js --out-file dist/simple-masonry-compiled.js",
-    "babel:watch": "babel js/simple-masonry.js --watch --out-file dist/simple-masonry-compiled.js",
+    "postinstall": "npm run dist && npm test",
+    "babel": "babel js/simple-masonry.js --out-file dist/simple-masonry.js",
+    "babel:watch": "babel js/simple-masonry.js --watch --out-file dist/simple-masonry.js",
     "jshint": "jshint js/simple-masonry.js",
-    "uglify": "uglifyjs -c -m -- dist/simple-masonry-compiled.js > dist/simple-masonry-compiled.min.js",
-    "dist": "mkdirp dist && copyfiles -u 1 js/simple-masonry.js dist && npm run babel && npm run uglify"
+    "uglify": "uglifyjs -c -m -- dist/simple-masonry.js > dist/simple-masonry.min.js",
+    "dist": "mkdirp dist && npm run babel && npm run uglify"
   }
 }
