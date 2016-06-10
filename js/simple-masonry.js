@@ -1,11 +1,10 @@
 /* jslint esnext:true */
+import helper from './components/helper';
+
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
         define(['SimpleMasonry'], factory);
-    } else if (typeof exports === 'object') {
-        // npm
-        module.exports = factory;
     } else {
         // Browser global
         window.SimpleMasonry = factory;
@@ -41,14 +40,13 @@
                     masonryColumn: '.masonry-column'
                 };
 
-            // Functions used just in this constructor
             let initColumns,
                 initItems,
                 getChildNodes;
 
-            // Create private Object
             _(that).privates = {};
             privateProps = _(that).privates;
+
             // Overwrite defaults
             for (var prop in defaults) {
                 if(defaults.hasOwnProperty(prop)) {
@@ -65,7 +63,7 @@
 
             /**
              * Check if parameter is a node
-             * @param  {(Object|string|Number)} node
+             * @param  {(object|string|number)} node
              * @return {Boolean}
              */
             privateProps.isNode = (node) => {
@@ -73,22 +71,8 @@
             };    
             
             /**
-             * Returns a reversed copy of array
-             * @param  {Array} srcArray
-             */
-            privateProps.reverseCopy = (srcArray) => {
-                var resultArray = [],
-                    i = srcArray.length - 1;
-
-                for (i; i >= 0; i -= 1){
-                  resultArray.push(srcArray[i])
-                } 
-                return resultArray;
-            };
-            
-            /**
              * Removes node's position in items-array
-             * @param  {Object} node
+             * @param  {object} node
              */
             privateProps.splice = (node) => {
                 let columnBox = privateProps.columnBoxes[0],
@@ -119,9 +103,10 @@
              * @return {number}
              */
             privateProps.countAvailableColumns = (columnBox) => {
-                var cols = columnBox.simpleMesonry.columns;
-                let iCol = cols.length - 1,
+                let cols = columnBox.simpleMesonry.columns,
+                    iCol = cols.length - 1,
                     newCount = 0;
+
                 // If a column exist
                 if (iCol > -1) {
                     // Top of first column
@@ -417,7 +402,7 @@
                 i;
             // return all items
             if (typeof colNumber !== 'number') {
-                return privateProps.reverseCopy(columnBox.simpleMesonry.items);
+                return helper.getReverseArrayCopy(columnBox.simpleMesonry.items);
             } else {
                 availableColumns = privateProps.countAvailableColumns(columnBox) - 1;
                 // if column not available
@@ -433,7 +418,7 @@
                         resultArray.push(items[i]);
                     }
                 }
-                return privateProps.reverseCopy(resultArray);
+                return helper.getReverseArrayCopy(resultArray);
             }
         }
 
@@ -484,6 +469,6 @@
             return privateProps.countAvailableColumns(columnBox);
         }
     }
-    
+    console.log(123);
     return SimpleMasonry;
 } ()));

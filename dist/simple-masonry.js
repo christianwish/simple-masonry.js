@@ -1,19 +1,46 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    getReverseArrayCopy: function getReverseArrayCopy(srcArray) {
+        var resultArray = [],
+            i = srcArray.length - 1;
+
+        for (i; i >= 0; i -= 1) {
+            resultArray.push(srcArray[i]);
+        }
+
+        return resultArray;
+    },
+    spliceNodeFromArray: function spliceNodeFromArray(node, srcArray) {
+        var index = srcArray.indexOf(node);
+        if (index >= 0) {
+            srcArray.splice(index, 1);
+        }
+    }
+};
+
+},{}],2:[function(require,module,exports){
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* jslint esnext:true */
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+var _helper = require('./components/helper');
+
+var _helper2 = _interopRequireDefault(_helper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/* jslint esnext:true */
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
         define(['SimpleMasonry'], factory);
-    } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
-        // npm
-        module.exports = factory;
     } else {
         // Browser global
         window.SimpleMasonry = factory;
@@ -55,14 +82,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 masonryColumn: '.masonry-column'
             };
 
-            // Functions used just in this constructor
             var initColumns = void 0,
                 initItems = void 0,
                 getChildNodes = void 0;
 
-            // Create private Object
             _(that).privates = {};
             privateProps = _(that).privates;
+
             // Overwrite defaults
             for (var prop in defaults) {
                 if (defaults.hasOwnProperty(prop)) {
@@ -79,7 +105,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             /**
              * Check if parameter is a node
-             * @param  {(Object|string|Number)} node
+             * @param  {(object|string|number)} node
              * @return {Boolean}
              */
             privateProps.isNode = function (node) {
@@ -87,22 +113,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             };
 
             /**
-             * Returns a reversed copy of array
-             * @param  {Array} srcArray
-             */
-            privateProps.reverseCopy = function (srcArray) {
-                var resultArray = [],
-                    i = srcArray.length - 1;
-
-                for (i; i >= 0; i -= 1) {
-                    resultArray.push(srcArray[i]);
-                }
-                return resultArray;
-            };
-
-            /**
              * Removes node's position in items-array
-             * @param  {Object} node
+             * @param  {object} node
              */
             privateProps.splice = function (node) {
                 var columnBox = privateProps.columnBoxes[0],
@@ -133,9 +145,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
              * @return {number}
              */
             privateProps.countAvailableColumns = function (columnBox) {
-                var cols = columnBox.simpleMesonry.columns;
-                var iCol = cols.length - 1,
+                var cols = columnBox.simpleMesonry.columns,
+                    iCol = cols.length - 1,
                     newCount = 0;
+
                 // If a column exist
                 if (iCol > -1) {
                     // Top of first column
@@ -446,7 +459,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     i = void 0;
                 // return all items
                 if (typeof colNumber !== 'number') {
-                    return privateProps.reverseCopy(columnBox.simpleMesonry.items);
+                    return _helper2.default.getReverseArrayCopy(columnBox.simpleMesonry.items);
                 } else {
                     availableColumns = privateProps.countAvailableColumns(columnBox) - 1;
                     // if column not available
@@ -462,7 +475,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                             resultArray.push(items[i]);
                         }
                     }
-                    return privateProps.reverseCopy(resultArray);
+                    return _helper2.default.getReverseArrayCopy(resultArray);
                 }
             }
 
@@ -526,5 +539,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return SimpleMasonry;
     }();
 
+    console.log(123);
     return SimpleMasonry;
 }());
+
+},{"./components/helper":1}]},{},[2]);

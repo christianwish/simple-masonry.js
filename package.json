@@ -1,7 +1,7 @@
 {
   "name": "simple-masonry",
   "version": "1.0.6",
-  "description": "Show items with different height in a grid of responsive columns. Works great with bootstrap.",
+  "description": "Simple Masonry effect for responsive columns. Works great with bootstrap.",
   "author": "Christian Heyn <chris.heyn.dd@gmail.com>",
   "repository": {
     "type": "git",
@@ -14,7 +14,9 @@
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
     "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.3.0",
     "bootstrap": "*",
+    "browserify": "^13.0.1",
     "chai": "^3.2.0",
     "jscs": "^3.0.4",
     "jshint": "^2.8.0",
@@ -32,12 +34,12 @@
     "bootstrap"
   ],
   "scripts": {
-    "test": "mocha-phantomjs tests/index.html",
+    "test": "npm run jshint && mocha-phantomjs tests/index.html",
     "postinstall": "npm run dist && npm test",
-    "babel": "babel js/simple-masonry.js --out-file dist/simple-masonry.js",
-    "babel:watch": "babel js/simple-masonry.js --watch --out-file dist/simple-masonry.js",
+    "watch:js": "watch-run -p 'js/**/*.js' npm run browserify",
+    "browserify": "browserify js/simple-masonry.js -o dist/simple-masonry.js -t [ babelify --presets [ es2015 ] ]",
     "jshint": "jshint js/simple-masonry.js",
     "uglify": "uglifyjs -c -m -- dist/simple-masonry.js > dist/simple-masonry.min.js",
-    "dist": "mkdirp dist && npm run babel && npm run uglify"
+    "dist": "mkdirp dist && npm run browserify && npm run uglify"
   }
 }
