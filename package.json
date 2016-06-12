@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/christianheyn/simple-masonry.js.git"
   },
-  "license": "MIT",
+  "license": "ISC",
   "keywords": [
     "masonry",
     "columns",
@@ -30,8 +30,8 @@
     "lint:js:test": "eslint test/js/**/*.js"
   },
   "author": "Christian Heyn",
-  "license": "ISC",
   "dependencies": {
+    "bootstrap-sass": "^3.3.6",
     "normalize.scss": "^0.1.0"
   },
   "devDependencies": {

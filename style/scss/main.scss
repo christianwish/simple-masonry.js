@@ -1,6 +1,45 @@
+@import 'node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 @import 'node_modules/normalize.scss/normalize';
 @import 'components/mixins';
 
+$color1: #4488EE;
+$color2: #AACCFF;
+$color3: #E6E6E6;
+$color-green: #5EB656;
+
 body {
-	background-color: #09f;
+	background-color: #fff;
+}
+
+.masonry-column {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.item {
+    position: relative;
+    padding: 15px;
+    background-color: $color2;
+    margin: 2px 1px 0 1px;
+
+    @media (max-width: $screen-xs-max) {
+        padding-bottom: 10px !important;
+    }
+}
+
+.item h4,
+.item h3 {
+    color: #fff;
+    font-weight: 200;
+}
+
+.item .columnbox .item {
+    background-color: #ccc;
+    padding: 0px !important;
+    margin: 1px;
+}
+
+.item .columnbox .column {
+    background-color: #fff;
+    padding: 0px !important;
 }
