@@ -1,37 +1,55 @@
-export default {
-	/**
-	 * get a reversed Copy from srcArray
-	 * @param  {array} srcArray
-	 * @return {array}
-	 */
-	getReverseArrayCopy: function (srcArray) {
-		var resultArray = [],
-            i = srcArray.length - 1;
+export default function () {
+    return {
+        /**
+         * An array that consists of array merges all in to a single array by zipper method 
+         * @param  {array} arrayOfArrays    array consists of arrays
+         * @return {array} new ordered array
+         */
+        zipperArray: (arrayOfArrays) => {
+            let resultArray,
+                length;
 
-        for (i; i >= 0; i -= 1){
-          resultArray.push(srcArray[i]);
+            if (typeof arrayOfArrays == 'undefined'
+                || !Array.isArray(arrayOfArrays)
+                || arrayOfArrays.length == 0) {
+                return [];
+            }
+
+            resultArray = [];
+            length = arrayOfArrays.length;
+
+            /**
+             * Recursion through all arrays
+             * @param  {number} colIndex  index of column
+             * @param  {number} itemIndex index of item
+             */
+            function order (counter) {
+                let emptyNumber = 0;
+
+                for (let i = 0; i < length; i += 1) {
+                    if (typeof arrayOfArrays[i][counter] != 'undefined') {
+                        resultArray.push(arrayOfArrays[i][counter]);
+                    } else {
+                        emptyNumber += 1;
+                    }
+                }
+
+                if (emptyNumber < length) {
+                    return order(counter += 1);
+                }
+
+                return resultArray;
+            };
+
+            return order(0);
+        },
+        /**
+         * Check if parameter is DOM node
+         * @param  {(object|string|number)} node
+         * @return {boolean}
+         */
+        isNode: (node) => {
+            return (node && (typeof node.innerHTML === 'string')) || false;
         }
-
-        return resultArray;
-	},
-
-	/**
-     * Removes node's position in array
-     * @param  {object} node
-     */
-	spliceNodeFromArray: (node, srcArray) => {
-        let index = srcArray.indexOf(node);
-        if (index >= 0) {
-            srcArray.splice(index, 1);
-        }
-    },
-
-    /**
-	 * Check if parameter is DOM node
-	 * @param  {(object|string|number)} node
-	 * @return {boolean}
-	 */
-    isNode: (node) => {
-        return (node && (typeof node.innerHTML === 'string'));
     }
-};
+}
